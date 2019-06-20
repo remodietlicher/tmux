@@ -1,0 +1,28 @@
+TMUX CHEAT SHEET
+
+WINDOWS
+-------
+create window               C-b c
+switch to previous window   C-b p
+switch to next window       C-b n
+switch to window number     C-b <number>
+most recently open window   C-b l
+swap windows                swap-window -s 3 -t 1
+
+PANES
+-----
+vertical split              C-b %
+horizontal split            C-b "
+resize pane                 C-b C-<arrow>
+switch pane                 C-b <arrow>
+toggle fullscreen pane      C-b z
+
+SESSIONS
+--------
+kill session                tmux kill-session -t <session name>
+list open sessions          tmux ls
+
+CUSTOM
+------
+mouse mode off              C-b a
+mouse mode on               C-b y
