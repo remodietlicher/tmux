@@ -16,6 +16,7 @@ horizontal split            C-b "
 resize pane                 C-b C-<arrow>
 switch pane                 C-b <arrow>
 toggle fullscreen pane      C-b z
+kill pane                   C-b x
 
 SESSIONS
 --------
