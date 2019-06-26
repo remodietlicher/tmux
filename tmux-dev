@@ -1,0 +1,26 @@
+#!/bin/sh
+
+session="dev"
+
+tmux start-server
+tmux new-session -d -s $session -n dev
+
+tmux selectp -t 0
+tmux send-keys "cd /home/remo/mch/model/icon/icon-eniac_gpu" C-m
+tmux split-window -v -c /home/remo/mch/model/icon/icon-eniac_gpu
+tmux selectp -t 1
+tmux split-window -h -c /home/remo/mch/model/icon/icon-eniac_gpu
+
+tmux new-window -t $session:1 -n exe
+tmux selectp -t 0
+tmux send-keys "cd /home/remo/mch/model/icon/experiments/case_dwd" C-m
+tmux split-window -h -c "/home/remo/mch/model/icon/experiments/case_dwd"
+tmux selectp -t 0
+tmux split-window -v -c "/home/remo/mch/model/icon/experiments/case_dwd"
+
+tmux new-window -t $session:2 -n todo
+tmux send-keys "vim /home/remo/meteobox/todo/impact_todo.txt" C-m
+
+tmux select-window -t $session:0
+
+tmux attach-session -t $session
