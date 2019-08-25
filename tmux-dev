@@ -8,15 +8,17 @@ tmux new-session -d -s $session -n dev
 tmux selectp -t 0
 tmux send-keys "cd /home/remo/mch/model/icon/icon-eniac_gpu" C-m
 tmux split-window -v -c /home/remo/mch/model/icon/icon-eniac_gpu
+tmux send-keys "load-icon-pgi" C-m
 tmux selectp -t 1
-tmux split-window -h -c /home/remo/mch/model/icon/icon-eniac_gpu
+tmux split-window -h -c /home/remo/mch/model/icon/icon-eniac_cpu
+tmux send-keys "load-icon-pgi" C-m
 
 tmux new-window -t $session:1 -n exe
 tmux selectp -t 0
-tmux send-keys "cd /home/remo/mch/model/icon/experiments/case_dwd" C-m
-tmux split-window -h -c "/home/remo/mch/model/icon/experiments/case_dwd"
+tmux send-keys "cd /home/remo/mch/model/icon/experiments/ch-lr" C-m
+tmux split-window -v -c "/home/remo/mch/model/icon/experiments/ch-lr/output/ser_data"
 tmux selectp -t 0
-tmux split-window -v -c "/home/remo/mch/model/icon/experiments/case_dwd"
+tmux split-window -h -c "/home/remo/mch/model/icon/experiments/ch-lr"
 
 tmux new-window -t $session:2 -n todo
 tmux send-keys "vim /home/remo/meteobox/todo/impact_todo.txt" C-m
