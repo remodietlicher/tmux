@@ -8,27 +8,27 @@ icon_cpu_dir=${icon_dir}/pgi_cpu
 tmux start-server
 tmux new-session -d -s $session -n dev
 
-tmux selectp -t 0
-tmux send-keys "cd $icon_dir" C-m
-tmux split-window -v -c $icon_dir
 tmux selectp -t 1
+tmux send-keys "cd $icon_dir" C-m
+tmux split-window -v -c $icon_gpu_dir
+tmux selectp -t 2
 tmux split-window -h -c $icon_cpu_dir
 
-tmux new-window -t $session:1 -n exe
-tmux selectp -t 0
+tmux new-window -t $session:2 -n exe
+tmux selectp -t 1
 tmux send-keys "cd $icon_gpu_dir/run" C-m
 tmux split-window -v -c "$icon_cpu_dir/experiments/mch_ch_lowres_tolerance/ser_data"
 tmux split-window -h -c "$icon_gpu_dir/run"
 tmux split-window -v -c "$icon_cpu_dir/run"
-tmux selectp -t 1
+tmux selectp -t 2
 tmux split-window -v -c "$icon_gpu_dir"
 
-tmux new-window -t $session:2 -n todo
+tmux new-window -t $session:3 -n todo
 tmux send-keys "cd /home/remo/meteobox/todo" C-m
 tmux send-keys "git add -u" C-m
 tmux send-keys "git commit -m 'todo session stored on $(date)'" C-m
 tmux send-keys "vim impact_todo.txt" C-m
 
-tmux select-window -t $session:0
+tmux select-window -t $session:1
 
 tmux attach-session -t $session
